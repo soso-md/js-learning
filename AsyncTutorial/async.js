@@ -32,10 +32,16 @@ function videoDetails(video) {
 //   .then((detail) => console.log(detail));
 
 async function displayUser() {
-  const user = await loginUser("ed", "blabla");
-  const videos = await getUserVideos(user.userEmail);
-  const detail = await videoDetails(videos[0]);
-  console.log(detail);
+  try {
+    //resolve
+    const user = await loginUser("ed", "blabla");
+    const videos = await getUserVideos(user.userEmail);
+    const detail = await videoDetails(videos[0]);
+    console.log(detail);
+  } catch (err) {
+    //reject
+    console.log(err);
+  }
 }
 
 displayUser();
